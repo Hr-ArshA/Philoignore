@@ -2,6 +2,7 @@ include LICENSE
 include README.md
 include Philoignore/templates/*.gitignore
 include Philoignore/templates/*.patch
+include Philoignore/*.txt
 
 recursive-include tests *
 recursive-exclude * __pycache__

@@ -1,4 +1,5 @@
 import os
+import io
 import re
 import sys
 import argparse
@@ -6,6 +7,7 @@ import argparse
 from Philoignore import __version__
 from Philoignore.constants.informations import VERSION_INFO, APPLICATION_DESCRIPTION, EPILOG_DESCRIPTION, INSTALLATION_GUIDE
 from rich.console import Console
+from importlib import resources
 
 parser = argparse.ArgumentParser(
     description=APPLICATION_DESCRIPTION + '\n\r\n\r' + INSTALLATION_GUIDE,
@@ -44,7 +46,7 @@ def main():
             list_of_all = list()
             main_text = "# Created by PhiloLearn\n\n"
             exist_list = list()
-            with open('files.txt', 'r') as file:
+            with resources.open_text("Philoignore", 'files.txt') as file:
                 this_file = file.read()
                 list_of_all = this_file.split('\n')
 
@@ -59,7 +61,7 @@ def main():
             
 
             for i in exist_list:
-                with open(f'templates/{i}') as f:
+                with resources.open_text("Philoignore.templates", f'{i}') as f:
                     name_list = str(i).split('.')[:-1]
                     name = ('.').join(name_list)
                     main_text += f"\t### {name.upper()} ###\n\n"
