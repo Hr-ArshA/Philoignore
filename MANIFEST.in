@@ -1,0 +1,10 @@
+include LICENSE
+include README.md
+include Philoignore/templates/*.gitignore
+include Philoignore/templates/*.patch
+
+recursive-include tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif *.gitignore *.patch
