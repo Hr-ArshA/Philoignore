@@ -1,3 +1,4 @@
+### premake-gmake ###
 Makefile
 *.make
 obj/

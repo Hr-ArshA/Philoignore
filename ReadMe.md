@@ -2,6 +2,7 @@
 
 Philoignore is a simple command line gitignore generator
 
+![philoignore cover](media/cover.png)
 
 ## Installation
 Make sure you have `pip` and `python>=3.6` installed on your machine and follow the steps.
@@ -14,7 +15,7 @@ Make sure you have `pip` and `python>=3.6` installed on your machine and follow 
 pip install git+https://github.com/Hr-ArshA/Philoignore.git
 ```
 
-> :warning:: Philoignore is POSIX-friendly And at this moment, If you don't follow the point mentioned in the "Usage" section, **Windows** will not be able to give a proper answer.
+> :warning:: Philoignore is POSIX-friendly And at this moment, But it is also compatible with Windows to a good extent.
 
 
 
@@ -25,11 +26,12 @@ Use `ignore` along with the technologies you want to create gitignore for.
 ignore "python"
 ```
 
-By default, it creates a directory in the home path called Philoignore and saves the file in it
-Use the -o or --output flag to save the file in the path you want
+By default on POSIX systems, it creates a directory in the home path called **Philoignore** and stores the file in it.
+And in Windows, the same **Philoignore** folder is created in the `c:\Users\you_username‍` path and the gitignore file is saved in it.
+
+Use the `-o` or `--output` flag to save the file in the path you want
 
 ```sh
 ignore "python" -o yout_path
 ```
 
-> ⚠️ : In order to be able to use this software in **Windows**, you must enter the desired path

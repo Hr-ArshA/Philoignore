@@ -52,13 +52,9 @@ def main():
 
             for e in entry:
                 for i in list_of_all:
-                    new_e = e[0].upper() + e[1:]
                     if re.findall(f'^{e}\..+', i) != []:
                         exist_list.append(re.findall(f'^{e}\..+', i)[0])
-                    
-                    elif re.findall(f'^{new_e}\..+', i) != []:
-                        exist_list.append(re.findall(f'^{new_e}\..+', i)[0])
-            
+
 
             for i in exist_list:
                 with resources.open_text("Philoignore.templates", f'{i}') as f:
@@ -76,15 +72,28 @@ def main():
                     file.write(main_text)
             
             else:
-                path = os.getenv('HOME')
                 try:
-                    os.mkdir(f'{path}/Philoignore')
+                    path = os.getenv('HOME')
+                    try:
+                        os.mkdir(f'{path}/Philoignore')
+                        
+                    except:
+                        pass
+
+                    with open(f'{path}/Philoignore/.gitignore', 'w') as file:
+                        file.write(main_text)
+
                 except:
-                    pass
+                    homepath = '/'.join(str(os.getenv('HOMEPATH')).split('\\'))
+                    path = f"{os.getenv('HOMEDRIVE')}/{homepath}"
+                    try:
+                        os.mkdir(f'{path}/Philoignore')
+                    except:
+                        pass
 
-                with open(f'{path}/Philoignore/.gitignore', 'w') as file:
-                    file.write(main_text)
-
+                    with open(f'{path}/Philoignore/.gitignore', 'w') as file:
+                        file.write(main_text)
+                        
             print_list = list()
             for i in str(args.entry[0]).split():
                 # print(i)

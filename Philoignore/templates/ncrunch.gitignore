@@ -1,0 +1,6 @@
+### NCrunch ###
+# NCrunch
+*.ncrunch*.user
+_NCrunch_*
+*.crunch.xml
+nCrunchTemp_*

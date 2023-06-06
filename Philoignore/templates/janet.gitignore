@@ -1,0 +1,6 @@
+### Janet ###
+# Compiled binaries
+build/
+
+# Dependency directory
+jpm_tree/

@@ -1,0 +1,4 @@
+### TextMate ###
+*.tmproj
+*.tmproject
+tmtags

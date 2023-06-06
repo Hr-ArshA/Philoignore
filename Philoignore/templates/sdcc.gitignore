@@ -1,0 +1,9 @@
+### Sdcc ###
+# SDCC stuff
+*.lnk
+*.lst
+*.map
+*.mem
+*.rel
+*.rst
+*.sym

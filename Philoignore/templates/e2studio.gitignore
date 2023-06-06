@@ -1,3 +1,4 @@
+### e2studio ###
 # Modified gitignore for Renesas E2Studio (Built on eclipse): maintain all data needed by eclipse to setting up a workspace.
 
 .history
@@ -8,4 +9,3 @@ history.index
 
 # E2 Studio Specific
 HardwareDebug/src
-

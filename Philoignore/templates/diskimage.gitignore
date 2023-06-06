@@ -1,0 +1,5 @@
+### DiskImage ###
+*.dmg
+*.iso
+*.toast
+*.vcd
