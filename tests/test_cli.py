@@ -5,8 +5,8 @@ from Philoignore.cli import parser
 
 def test_argparse():
     args = parser.parse_args([])
-    assert args.ask == []
+    assert args.entry == []
 
-    args = parser.parse_args(['capital', 'France'])
-    assert args.ask == ['capital', 'France']
+    args = parser.parse_args(['python venv'])
+    assert args.entry == ['python venv']
 
