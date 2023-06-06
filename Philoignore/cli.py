@@ -8,6 +8,7 @@ from Philoignore import __version__
 from Philoignore.constants.informations import VERSION_INFO, APPLICATION_DESCRIPTION, EPILOG_DESCRIPTION, INSTALLATION_GUIDE
 from rich.console import Console
 from importlib import resources
+from pathlib import Path
 
 parser = argparse.ArgumentParser(
     description=APPLICATION_DESCRIPTION + '\n\r\n\r' + INSTALLATION_GUIDE,
@@ -42,7 +43,7 @@ def main():
 
     if args:
         with console.status('Creating'):
-            entry = str(args.entry[0]).split()
+            entry = args.entry
             list_of_all = list()
             main_text = "# Created by PhiloLearn\n\n"
             exist_list = list()
@@ -60,9 +61,9 @@ def main():
                 with resources.open_text("Philoignore.templates", f'{i}') as f:
                     name_list = str(i).split('.')[:-1]
                     name = ('.').join(name_list)
-                    main_text += f"\t### {name.upper()} ###\n\n"
+                    
+                    main_text += f"### {name.upper()} ###\n\n"
                     main_text += f.read()
-
                     main_text += "\n"
 
 
@@ -72,34 +73,11 @@ def main():
                     file.write(main_text)
             
             else:
-                try:
-                    path = os.getenv('HOME')
-                    try:
-                        os.mkdir(f'{path}/Philoignore')
-                        
-                    except:
-                        pass
-
-                    with open(f'{path}/Philoignore/.gitignore', 'w') as file:
-                        file.write(main_text)
-
-                except:
-                    homepath = '/'.join(str(os.getenv('HOMEPATH')).split('\\'))
-                    path = f"{os.getenv('HOMEDRIVE')}/{homepath}"
-                    try:
-                        os.mkdir(f'{path}/Philoignore')
-                    except:
-                        pass
-
-                    with open(f'{path}/Philoignore/.gitignore', 'w') as file:
-                        file.write(main_text)
-                        
-            print_list = list()
-            for i in str(args.entry[0]).split():
-                # print(i)
-                print_list.append(f"[bold #01bc30]{i}[/]")
+                path = Path().cwd()
+                with open(f'{path}/.gitignore', 'w') as file:
+                    file.write(main_text)
                 
-            console.print(f'[bold yellow]gitignore[/] for \[{(", ".join(print_list))}] was [bold yellow]created[/] in {path}!')
+            console.print(f'[bold yellow]gitignore[/] for {args.entry} was [bold yellow]created[/] in {path}!')
     
     return 0
 
