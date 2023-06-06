@@ -35,3 +35,7 @@ Use the `-o` or `--output` flag to save the file in the path you want
 ignore "python" -o yout_path
 ```
 
+### License
+Philoignore is being licensed under the [MIT License](https://github.com/Hr-ArshA/Philoignore/blob/main/LICENSE).
+
+
