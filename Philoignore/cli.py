@@ -30,6 +30,12 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    '-l',
+    '--list',
+    action='store_true',
+)
+
+parser.add_argument(
     '-o',
     '--output',
     type=str,
@@ -41,11 +47,16 @@ def main():
     args = parser.parse_args()
     console = Console()
 
-    if args:
+    if args.list:
+        with resources.open_text("Philoignore", 'list.txt') as file:
+            this_file = file.read()
+            console.print(this_file)
+
+    if args.entry or args.output:
         with console.status('Creating'):
             entry = args.entry
             list_of_all = list()
-            main_text = "# Created by PhiloLearn\n\n"
+            main_text = "# Created by PhiloLearn"
             exist_list = list()
             with resources.open_text("Philoignore", 'files.txt') as file:
                 this_file = file.read()
@@ -61,8 +72,8 @@ def main():
                 with resources.open_text("Philoignore.templates", f'{i}') as f:
                     name_list = str(i).split('.')[:-1]
                     name = ('.').join(name_list)
-                    
-                    main_text += f"### {name.upper()} ###\n\n"
+
+                    main_text += f"\n\n### {name.upper()} ###\n\n"
                     main_text += f.read()
                     main_text += "\n"
 
