@@ -23,17 +23,29 @@ pip install git+https://github.com/Hr-ArshA/Philoignore.git
 Use `ignore` along with the technologies you want to create gitignore for.
 
 ```sh
-ignore "python"
+ignore python
 ```
-
-By default on POSIX systems, it creates a directory in the home path called **Philoignore** and stores the file in it.
-And in Windows, the same **Philoignore** folder is created in the `c:\Users\you_username‍` path and the gitignore file is saved in it.
-
-Use the `-o` or `--output` flag to save the file in the path you want
+or
 
 ```sh
-ignore "python" -o yout_path
+ignore python venv django
 ```
+
+
+By default, the file is created in the path where you are located, But you can use "-o" or "--output" flag to save the file in the path you want.
+
+```sh
+ignore python -o yout_path
+
+ignore python --output yout_path
+```
+
+To close the list of all gitignores, you can use the `--list` or `-l` flag
+
+```sh
+ignore --list
+```
+
 
 ### License
 Philoignore is being licensed under the [MIT License](https://github.com/Hr-ArshA/Philoignore/blob/main/LICENSE).
